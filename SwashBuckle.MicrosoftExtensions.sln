@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.0.0
-MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwashBuckle.MicrosoftExtensions", "SwashBuckle.MicrosoftExtensions\SwashBuckle.MicrosoftExtensions.csproj", "{D131F460-1CB3-4C66-96C0-D1DC0D1D63CB}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApi", "TestApi\TestApi.csproj", "{83942D83-2BA1-4490-BF5D-7356CD370B99}"
 EndProject
-Project("{4871FC7E-46CD-42DE-AB39-4D24D92F8846}") = "SwashBuckle.MicrosoftExtensions.Tests", "SwashBuckle.MicrosoftExtensions.Tests\SwashBuckle.MicrosoftExtensions.Tests.csproj", "{572937DD-BA35-4C22-A649-518C39B99D38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwashBuckle.MicrosoftExtensions", "SwashBuckle.MicrosoftExtensions\SwashBuckle.MicrosoftExtensions.csproj", "{60D79569-D240-4372-BD97-4CF984AC43B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swashbuckle.AspNetCore.MicrosoftExtensions.Tests", "Swashbuckle.AspNetCore.MicrosoftExtensions.Tests\Swashbuckle.AspNetCore.MicrosoftExtensions.Tests.csproj", "{7451BF97-503F-4FC9-BDE8-976912F52838}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D131F460-1CB3-4C66-96C0-D1DC0D1D63CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D131F460-1CB3-4C66-96C0-D1DC0D1D63CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D131F460-1CB3-4C66-96C0-D1DC0D1D63CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D131F460-1CB3-4C66-96C0-D1DC0D1D63CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{572937DD-BA35-4C22-A649-518C39B99D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{572937DD-BA35-4C22-A649-518C39B99D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{572937DD-BA35-4C22-A649-518C39B99D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{572937DD-BA35-4C22-A649-518C39B99D38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83942D83-2BA1-4490-BF5D-7356CD370B99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83942D83-2BA1-4490-BF5D-7356CD370B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83942D83-2BA1-4490-BF5D-7356CD370B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83942D83-2BA1-4490-BF5D-7356CD370B99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60D79569-D240-4372-BD97-4CF984AC43B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60D79569-D240-4372-BD97-4CF984AC43B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60D79569-D240-4372-BD97-4CF984AC43B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60D79569-D240-4372-BD97-4CF984AC43B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7451BF97-503F-4FC9-BDE8-976912F52838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7451BF97-503F-4FC9-BDE8-976912F52838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7451BF97-503F-4FC9-BDE8-976912F52838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7451BF97-503F-4FC9-BDE8-976912F52838}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
