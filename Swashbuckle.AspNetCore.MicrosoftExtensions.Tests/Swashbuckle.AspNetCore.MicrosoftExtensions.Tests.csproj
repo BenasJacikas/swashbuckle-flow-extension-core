@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
@@ -10,8 +10,6 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SwashBuckle.MicrosoftExtensions\SwashBuckle.MicrosoftExtensions.csproj" />
-    <ProjectReference Include="..\TestApi\TestApi.csproj" />
     <ProjectReference Include="..\TestApi\TestApi.csproj" />
   </ItemGroup>
 </Project>

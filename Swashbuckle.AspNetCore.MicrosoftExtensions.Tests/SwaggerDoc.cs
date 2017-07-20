@@ -10,15 +10,15 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
         public Info Info;
         public IDictionary<string, Parameter> Parameters;
         public IDictionary<string, PathItem> Paths;
-        public readonly string Swagger;
         public Dictionary<string, object> VendorExtensions;
     }
 
     public class Info
     {
         public string Title;
-        public Dictionary<string, object> VendorExtensions;
         public string Version;
+        [JsonExtensionData]
+        public Dictionary<string, object> VendorExtensions;
     }
 
     public class Parameter
@@ -26,12 +26,16 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
         public string Name;
         public string In;
         public string Type;
+        [JsonExtensionData]
         public Dictionary<string, object> VendorExtensions;
     }
 
     public class PathItem
     {
         public Operation Get;
+        public Operation Post;
+        public Operation Put;
+        [JsonExtensionData]
         public Dictionary<string, object> VendorExtensions;
     }
 
@@ -39,6 +43,8 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
     {
         public IList<Parameter> Parameters;
         public IDictionary<string, Response> Responses;
+        [JsonExtensionData]
+        public Dictionary<string, object> VendorExtensions;
     }
 
     public class Response

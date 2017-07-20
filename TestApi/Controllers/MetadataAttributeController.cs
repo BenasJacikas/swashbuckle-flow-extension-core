@@ -1,17 +1,18 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SwashBuckle.MicrosoftExtensions.Attributes;
 using SwashBuckle.MicrosoftExtensions.Filters;
+using TestApi.Models;
 
 namespace TestApi.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class MetadataAttributeController : Controller
     {
         [HttpPost]
         [Metadata("FriendlyAction", "ActionDescription", VisibilityType.Important)]
-        public void Post([FromBody][Metadata("FriendlyParameter", "ParameterDescription")] string value)
+        public MetdataAttributeClass Post([FromBody][Metadata("FriendlyParameter", "ParameterDescription")] string value)
         {
+            return null;
         }
     }
 }

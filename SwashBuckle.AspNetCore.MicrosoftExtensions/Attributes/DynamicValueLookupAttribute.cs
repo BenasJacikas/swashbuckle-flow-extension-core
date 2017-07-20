@@ -6,7 +6,7 @@ namespace SwashBuckle.MicrosoftExtensions.Attributes
     /// <summary>
     /// Provides a mechanism to emit the x-ms-dynamic-values vendor extension for a decorated parameter
     /// </summary>
-    [System.AttributeUsage(AttributeTargets.Parameter)]
+    [AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property)]
     public sealed class DynamicValueLookupAttribute : Attribute
     {
 

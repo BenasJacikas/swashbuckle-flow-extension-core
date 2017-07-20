@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApi", "TestApi\TestApi.csproj", "{83942D83-2BA1-4490-BF5D-7356CD370B99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwashBuckle.MicrosoftExtensions", "SwashBuckle.MicrosoftExtensions\SwashBuckle.MicrosoftExtensions.csproj", "{60D79569-D240-4372-BD97-4CF984AC43B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwashBuckle.AspNetCore.MicrosoftExtensions", "SwashBuckle.AspNetCore.MicrosoftExtensions\SwashBuckle.AspNetCore.MicrosoftExtensions.csproj", "{60D79569-D240-4372-BD97-4CF984AC43B6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swashbuckle.AspNetCore.MicrosoftExtensions.Tests", "Swashbuckle.AspNetCore.MicrosoftExtensions.Tests\Swashbuckle.AspNetCore.MicrosoftExtensions.Tests.csproj", "{7451BF97-503F-4FC9-BDE8-976912F52838}"
 EndProject

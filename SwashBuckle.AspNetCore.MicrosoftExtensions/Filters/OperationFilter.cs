@@ -43,6 +43,7 @@ namespace SwashBuckle.MicrosoftExtensions.Filters
                 {
                     case ControllerParameterDescriptor controllerParameterDescriptor:
                         AddMetadataProperties(operationParameter, controllerParameterDescriptor.ParameterInfo);
+                        AddValueLookupProperties(operationParameter, controllerParameterDescriptor.ParameterInfo);
                         break;
                     case ControllerBoundPropertyDescriptor controllerBoundPropertyDescriptor:
                         AddMetadataProperties(operationParameter, controllerBoundPropertyDescriptor.PropertyInfo);
@@ -50,6 +51,13 @@ namespace SwashBuckle.MicrosoftExtensions.Filters
                     default: continue;
                 }
             }
+        }
+
+        private static void AddValueLookupProperties(IParameter parameter, ICustomAttributeProvider attributeProvider)
+        {
+            var attribute = attributeProvider.GetCustomAttributes(typeof(DynamicValueLookupAttribute), true).SingleOrDefault() as DynamicValueLookupAttribute;
+            var extensions = attribute.GetSwaggerExtensions();
+            parameter.Extensions.AddRange(extensions);
         }
 
         private static void AddMetadataProperties(IParameter parameter, ICustomAttributeProvider attributeProvider)
