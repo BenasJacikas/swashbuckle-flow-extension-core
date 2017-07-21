@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-namespace SwashBuckle.MicrosoftExtensions.VendorExtensionEntities
+namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
 {
     public class DynamicValuesModel
     {
@@ -15,9 +16,9 @@ namespace SwashBuckle.MicrosoftExtensions.VendorExtensionEntities
         [JsonProperty("value-collection")]
         public string ValueCollection { get; }
         [JsonProperty("parameters")]
-        public IDictionary<string, object> Parameters { get; }
+        public Dictionary<string, object> Parameters { get; }
 
-        public DynamicValuesModel(string operationId, string valuePath, string valueTitle, string valueCollection, IDictionary<string, object> parameters)
+        public DynamicValuesModel(string operationId, string valuePath, string valueTitle, string valueCollection, Dictionary<string, object> parameters)
         {
             OperationId = operationId;
             ValuePath = valuePath;

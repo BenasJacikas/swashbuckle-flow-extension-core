@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
-using SwashBuckle.MicrosoftExtensions.Attributes;
-using SwashBuckle.MicrosoftExtensions.Filters;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.Filters;
 
 namespace TestApi.Models
 {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using SwashBuckle.MicrosoftExtensions.Attributes;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes;
 
-namespace SwashBuckle.MicrosoftExtensions.Extensions
+namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
 {
     internal static class MetadataAttributeExtensions
     {

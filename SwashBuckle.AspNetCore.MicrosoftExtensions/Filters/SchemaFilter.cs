@@ -1,11 +1,9 @@
-﻿using System.Reflection;
-using Newtonsoft.Json.Serialization;
+﻿using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using SwashBuckle.MicrosoftExtensions.Attributes;
-using SwashBuckle.MicrosoftExtensions.Extensions;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions;
 
-namespace SwashBuckle.MicrosoftExtensions.Filters
+namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
 {
     public class SchemaFilter : ISchemaFilter
     {

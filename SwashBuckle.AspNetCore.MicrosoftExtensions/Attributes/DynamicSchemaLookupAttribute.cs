@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SwashBuckle.MicrosoftExtensions.Attributes
+namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes
 {
 
     /// <summary>

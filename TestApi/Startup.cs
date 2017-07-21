@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
-using SwashBuckle.MicrosoftExtensions.Filters;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.Filters;
 
 namespace TestApi
 {
@@ -22,8 +23,15 @@ namespace TestApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure
+            (
+            IApplicationBuilder app, 
+            IHostingEnvironment env,
+            ILoggerFactory loggerFactory
+                )
         {
+            loggerFactory
+                .AddConsole();
             app.UseMvc();
             app.UseSwagger();
             app.UseSwaggerUI(c =>

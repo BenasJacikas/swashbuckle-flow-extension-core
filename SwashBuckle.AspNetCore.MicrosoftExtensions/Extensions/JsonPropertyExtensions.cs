@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
-using SwashBuckle.MicrosoftExtensions.Attributes;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes;
 
-namespace SwashBuckle.MicrosoftExtensions.Extensions
+namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
 {
     internal static class JsonPropertyExtensions
     {

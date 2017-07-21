@@ -1,7 +1,7 @@
 using System;
-using SwashBuckle.MicrosoftExtensions.Filters;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.Filters;
 
-namespace SwashBuckle.MicrosoftExtensions.Attributes
+namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes
 {
     /// <summary>
     /// Provides information about how to display this action,

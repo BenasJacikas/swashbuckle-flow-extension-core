@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SwashBuckle.MicrosoftExtensions.Extensions
+namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
 {
     internal static class DictionaryExtensions
     {

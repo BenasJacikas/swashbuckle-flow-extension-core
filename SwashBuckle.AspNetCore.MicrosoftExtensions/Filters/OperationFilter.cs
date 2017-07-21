@@ -2,14 +2,13 @@
 using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc.Abstractions;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using SwashBuckle.MicrosoftExtensions.Attributes;
-using SwashBuckle.MicrosoftExtensions.Extensions;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions;
 
-namespace SwashBuckle.MicrosoftExtensions.Filters
+namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
 {
     public class OperationFilter : IOperationFilter
     {
