@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json.Linq;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.Helpers;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities;
 
 namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
@@ -27,31 +28,12 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
                     attribute.ValuePath,
                     attribute.ValueTitle,
                     attribute.ValueCollection,
-                    ParseParameters(attribute.Parameters)
+                    ParameterParser.Parse(attribute.Parameters)
                 )
             );
 
         }
 
-        private static Dictionary<string, object> ParseParameters(string s)
-        {
-            var parameters = QueryHelpers.ParseQuery(s);
-            return parameters.Select(ParseParameter).ToDictionary(x => x.Key, x => x.Value);
-        }
-
-        private static KeyValuePair<string, object> ParseParameter(KeyValuePair<string, StringValues> parameter)
-        {
-            var matches = Regex.Match(parameter.Value, @"^{(.+)}$");
-            if(matches.Success)
-            {
-                return new KeyValuePair<string, object>
-                (
-                    parameter.Key,
-                    new Dictionary<string, string> {{Constants.Parameter, matches.Groups[1].Value}}
-                );
-            }
-            return new KeyValuePair<string, object>(parameter.Key, parameter.Value[0]);
-        }
 
     }
 }

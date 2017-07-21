@@ -11,6 +11,9 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
     {
         internal static void ExtendProperties(this IDictionary<string, Schema> schemaProperties, JsonPropertyCollection jsonProperties)
         {
+            if (schemaProperties is null)
+                return;
+            
             foreach (var schemaProperty in schemaProperties)
             {
                 var jsonProperty = jsonProperties.FirstOrDefault(x => x.PropertyName == schemaProperty.Key);
@@ -21,21 +24,27 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
         private static void ExtendProperty (this Schema schema, JsonProperty jsonProperty)
         {
             schema.Extensions.AddRange(GetMetadataExtensions(jsonProperty.AttributeProvider));
-            schema.Extensions.AddRange(AddValueLookupProperties(jsonProperty.AttributeProvider));
+            schema.Extensions.AddRange(GetValueLookupProperties(jsonProperty.AttributeProvider));
+            schema.Extensions.AddRange(GetSchemaLookupProperties(jsonProperty.AttributeProvider));
         }
         
         private static IEnumerable<KeyValuePair<string, object>> GetMetadataExtensions(IAttributeProvider attributeProvider)
         {
             var attribute = attributeProvider.GetAttributes(typeof(MetadataAttribute), false).SingleOrDefault() as MetadataAttribute;
-
             return attribute.GetMetadataExtensions();
         }
 
-        private static IEnumerable<KeyValuePair<string, object>> AddValueLookupProperties(IAttributeProvider attributeProvider)
+        private static IEnumerable<KeyValuePair<string, object>> GetValueLookupProperties(IAttributeProvider attributeProvider)
         {
             var attribute = attributeProvider.GetAttributes(typeof(DynamicValueLookupAttribute), true).SingleOrDefault() as DynamicValueLookupAttribute;
             return attribute.GetSwaggerExtensions();
         }
-        
+
+        private static IEnumerable<KeyValuePair<string, object>> GetSchemaLookupProperties
+            (IAttributeProvider attributeProvider)
+        {
+            var attribute = attributeProvider.GetAttributes(typeof(DynamicSchemaLookupAttribute), true).SingleOrDefault() as DynamicSchemaLookupAttribute;
+            return attribute.GetSwaggerExtensions();
+        }
     }
 }

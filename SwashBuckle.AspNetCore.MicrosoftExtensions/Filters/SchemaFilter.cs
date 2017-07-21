@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json.Serialization;
+﻿using System.Reflection;
+using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions;
 
 namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
@@ -9,12 +11,15 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
     {
         public void Apply(Schema model, SchemaFilterContext context)
         {
-            if (model is null || context is null)
+            if(model is null || context is null)
             {
                 return;
             }
 
-            if (context.JsonContract is JsonObjectContract objectContract)
+            var attribute = context.SystemType.GetTypeInfo().GetCustomAttribute<DynamicSchemaLookupAttribute>();
+            model.Extensions.AddRange(attribute.GetSwaggerExtensions());
+
+            if(context.JsonContract is JsonObjectContract objectContract)
             {
                 model.Properties.ExtendProperties(objectContract.Properties);
             }

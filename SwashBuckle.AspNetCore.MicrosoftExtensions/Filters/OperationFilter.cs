@@ -43,9 +43,12 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
                     case ControllerParameterDescriptor controllerParameterDescriptor:
                         AddMetadataProperties(operationParameter, controllerParameterDescriptor.ParameterInfo);
                         AddValueLookupProperties(operationParameter, controllerParameterDescriptor.ParameterInfo);
+                        AddSchemaLookupProperties(operationParameter, controllerParameterDescriptor.ParameterInfo);
                         break;
                     case ControllerBoundPropertyDescriptor controllerBoundPropertyDescriptor:
                         AddMetadataProperties(operationParameter, controllerBoundPropertyDescriptor.PropertyInfo);
+                        AddValueLookupProperties(operationParameter, controllerBoundPropertyDescriptor.PropertyInfo);
+                        AddSchemaLookupProperties(operationParameter, controllerBoundPropertyDescriptor.PropertyInfo);
                         break;
                     default: continue;
                 }
@@ -63,6 +66,13 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
         {
             var attribute = attributeProvider.GetCustomAttributes(typeof(MetadataAttribute), true).SingleOrDefault() as MetadataAttribute;
             var extensions = attribute.GetMetadataExtensions();
+            parameter.Extensions.AddRange(extensions);
+        }
+
+        private static void AddSchemaLookupProperties(IParameter parameter, ICustomAttributeProvider attributeProvider)
+        {
+            var attribute = attributeProvider.GetCustomAttributes(typeof(DynamicSchemaLookupAttribute), true).SingleOrDefault() as DynamicSchemaLookupAttribute;
+            var extensions = attribute.GetSwaggerExtensions();
             parameter.Extensions.AddRange(extensions);
         }
     }
