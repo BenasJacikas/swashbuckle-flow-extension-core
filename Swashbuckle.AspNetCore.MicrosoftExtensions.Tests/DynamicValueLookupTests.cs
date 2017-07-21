@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using TestApi;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
 {
@@ -11,9 +10,8 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
     {
         
         private readonly HttpClient _client;
-        private readonly ITestOutputHelper _logger;
 
-        public DynamicValueLookupTests(ITestOutputHelper logger)
+        public DynamicValueLookupTests()
         {
             // Arrange
             var server = new TestServer
@@ -21,7 +19,6 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
                 new WebHostBuilder().UseStartup<Startup>()
             );
             _client = server.CreateClient();
-            _logger = logger;
         }
 
         [Fact]
@@ -38,6 +35,24 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
             Assert.Equal("name", (string) dynamicValues["value-title"]);
             Assert.Equal("static", (string) dynamicValues.parameters.test);
             Assert.Equal("dynamic", (string) dynamicValues.parameters.test2.parameter);
+
+        }
+        
+        [Fact]
+        public async void PropertyValueLookup()
+        {
+            
+            var swaggerDoc = await _client.GetSwaggerDocument();
+            var operationExtensions = swaggerDoc.Definitions["DynamicValueLookupClass"].Properties["lookupProperty"].Extensions;
+            
+            Assert.NotNull(operationExtensions["x-ms-dynamic-values"]);
+            dynamic dynamicValues = operationExtensions["x-ms-dynamic-values"];
+            Assert.Equal("DynamicValuePropertyId", (string) dynamicValues.operationId);
+            Assert.Equal("id", (string) dynamicValues["value-path"]);
+            Assert.Equal("name", (string) dynamicValues["value-title"]);
+            Assert.Equal("objects", (string) dynamicValues["value-collection"]);
+            Assert.Equal("test", (string) dynamicValues.parameters.param1.parameter);
+            Assert.Equal("test", (string) dynamicValues.parameters.param2);
 
         }
     }

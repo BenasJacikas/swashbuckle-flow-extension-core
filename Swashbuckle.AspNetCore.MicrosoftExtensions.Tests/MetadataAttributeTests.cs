@@ -13,9 +13,8 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
     public class MetadataAttributeTests
     {
         private readonly HttpClient _client;
-        private readonly ITestOutputHelper _logger;
 
-        public MetadataAttributeTests(ITestOutputHelper logger)
+        public MetadataAttributeTests()
         {
             // Arrange
             var server = new TestServer
@@ -23,7 +22,6 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
                 new WebHostBuilder().UseStartup<Startup>()
             );
             _client = server.CreateClient();
-            _logger = logger;
         }
 
         [Fact]

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes;
+using TestApi.Models;
 
 namespace TestApi.Controllers
 {
@@ -7,10 +8,13 @@ namespace TestApi.Controllers
     {
         [HttpGet]
         [Route("api/dynamic")]
-        public void Get
+        public DynamicValueLookupClass Get
         (
             [DynamicValueLookup("DynamicValueLookupId", "id", "name", parameters: "test=static&test2={dynamic}")]
             string dynamicValue
-        ) { }
+        )
+        {
+            return null;
+        }
     }
 }

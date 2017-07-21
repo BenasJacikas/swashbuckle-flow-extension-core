@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes;
@@ -20,15 +21,21 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
         private static void ExtendProperty (this Schema schema, JsonProperty jsonProperty)
         {
             schema.Extensions.AddRange(GetMetadataExtensions(jsonProperty.AttributeProvider));
+            schema.Extensions.AddRange(AddValueLookupProperties(jsonProperty.AttributeProvider));
         }
         
         private static IEnumerable<KeyValuePair<string, object>> GetMetadataExtensions(IAttributeProvider attributeProvider)
         {
-            var attribute = attributeProvider.GetAttributes(typeof(MetadataAttribute), false).Single() as MetadataAttribute;
+            var attribute = attributeProvider.GetAttributes(typeof(MetadataAttribute), false).SingleOrDefault() as MetadataAttribute;
 
             return attribute.GetMetadataExtensions();
         }
 
+        private static IEnumerable<KeyValuePair<string, object>> AddValueLookupProperties(IAttributeProvider attributeProvider)
+        {
+            var attribute = attributeProvider.GetAttributes(typeof(DynamicValueLookupAttribute), true).SingleOrDefault() as DynamicValueLookupAttribute;
+            return attribute.GetSwaggerExtensions();
+        }
         
     }
 }
