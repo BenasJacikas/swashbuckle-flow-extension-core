@@ -31,7 +31,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
         private static IEnumerable<KeyValuePair<string, object>> GetMetadataExtensions(IAttributeProvider attributeProvider)
         {
             var attribute = attributeProvider.GetAttributes(typeof(MetadataAttribute), false).SingleOrDefault() as MetadataAttribute;
-            return attribute.GetMetadataExtensions();
+            return attribute.GetSwaggerExtensions();
         }
 
         private static IEnumerable<KeyValuePair<string, object>> GetValueLookupProperties(IAttributeProvider attributeProvider)

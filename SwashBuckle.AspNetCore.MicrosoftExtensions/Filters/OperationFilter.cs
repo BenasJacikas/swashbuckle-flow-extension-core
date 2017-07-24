@@ -18,13 +18,12 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
                 return;
             
             var metadataAttribute = context.ApiDescription.ActionAttributes().OfType<MetadataAttribute>().SingleOrDefault();
-
-            operation.Extensions.AddRange(metadataAttribute.GetMetadataExtensions());
+            operation.Extensions.AddRange(metadataAttribute.GetSwaggerExtensions());
             
-            ApplyPropertiesMetadata(operation.Parameters, context.ApiDescription.ActionDescriptor.Parameters);
+            ApplyParametersMetadata(operation.Parameters, context.ApiDescription.ActionDescriptor.Parameters);
         }
 
-        private static void ApplyPropertiesMetadata
+        private static void ApplyParametersMetadata
         (
             IEnumerable<IParameter> parameters,
             IList<ParameterDescriptor> parameterDescriptions
@@ -35,45 +34,44 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
             
             foreach (var operationParameter in parameters)
             {
-                var parameterDescription =
-                    parameterDescriptions.FirstOrDefault(x =>
-                        x.Name == operationParameter.Name);
+                var parameterDescription = parameterDescriptions.FirstOrDefault(x => x.Name == operationParameter.Name);
                 switch (parameterDescription)
                 {
                     case ControllerParameterDescriptor controllerParameterDescriptor:
-                        AddMetadataProperties(operationParameter, controllerParameterDescriptor.ParameterInfo);
-                        AddValueLookupProperties(operationParameter, controllerParameterDescriptor.ParameterInfo);
-                        AddSchemaLookupProperties(operationParameter, controllerParameterDescriptor.ParameterInfo);
+                        operationParameter.Extensions.AddRange(GetParameterExtensions(controllerParameterDescriptor.ParameterInfo));
                         break;
                     case ControllerBoundPropertyDescriptor controllerBoundPropertyDescriptor:
-                        AddMetadataProperties(operationParameter, controllerBoundPropertyDescriptor.PropertyInfo);
-                        AddValueLookupProperties(operationParameter, controllerBoundPropertyDescriptor.PropertyInfo);
-                        AddSchemaLookupProperties(operationParameter, controllerBoundPropertyDescriptor.PropertyInfo);
+                        operationParameter.Extensions.AddRange(GetParameterExtensions(controllerBoundPropertyDescriptor.PropertyInfo));
                         break;
-                    default: continue;
+                    default:
+                        continue;
                 }
             }
         }
 
-        private static void AddValueLookupProperties(IParameter parameter, ICustomAttributeProvider attributeProvider)
+        private static IEnumerable<KeyValuePair<string, object>> GetParameterExtensions(ICustomAttributeProvider attributeProvider)
+        {
+            return GetValueLookupProperties(attributeProvider)
+                .Concat(GetMetadataProperties(attributeProvider))
+                .Concat(GetSchemaLookupProperties(attributeProvider));
+        }
+
+        private static IEnumerable<KeyValuePair<string, object>> GetValueLookupProperties(ICustomAttributeProvider attributeProvider)
         {
             var attribute = attributeProvider.GetCustomAttributes(typeof(DynamicValueLookupAttribute), true).SingleOrDefault() as DynamicValueLookupAttribute;
-            var extensions = attribute.GetSwaggerExtensions();
-            parameter.Extensions.AddRange(extensions);
+            return attribute.GetSwaggerExtensions();
         }
 
-        private static void AddMetadataProperties(IParameter parameter, ICustomAttributeProvider attributeProvider)
+        private static IEnumerable<KeyValuePair<string, object>> GetMetadataProperties(ICustomAttributeProvider attributeProvider)
         {
             var attribute = attributeProvider.GetCustomAttributes(typeof(MetadataAttribute), true).SingleOrDefault() as MetadataAttribute;
-            var extensions = attribute.GetMetadataExtensions();
-            parameter.Extensions.AddRange(extensions);
+            return attribute.GetSwaggerExtensions();
         }
 
-        private static void AddSchemaLookupProperties(IParameter parameter, ICustomAttributeProvider attributeProvider)
+        private static IEnumerable<KeyValuePair<string, object>> GetSchemaLookupProperties(ICustomAttributeProvider attributeProvider)
         {
             var attribute = attributeProvider.GetCustomAttributes(typeof(DynamicSchemaLookupAttribute), true).SingleOrDefault() as DynamicSchemaLookupAttribute;
-            var extensions = attribute.GetSwaggerExtensions();
-            parameter.Extensions.AddRange(extensions);
+            return attribute.GetSwaggerExtensions();
         }
     }
 }

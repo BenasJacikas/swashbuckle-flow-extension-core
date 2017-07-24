@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Reflection;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -16,21 +17,18 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
                 return;
             }
 
-            var attribute = context.SystemType.GetTypeInfo().GetCustomAttribute<DynamicSchemaLookupAttribute>();
-            model.Extensions.AddRange(attribute.GetSwaggerExtensions());
+            model.Extensions.AddRange(GetClassExtensions(context));
 
             if(context.JsonContract is JsonObjectContract objectContract)
             {
                 model.Properties.ExtendProperties(objectContract.Properties);
             }
         }
-    }
 
-    public enum VisibilityType
-    {
-        Default,
-        Internal,
-        Advanced,
-        Important
+        private IEnumerable<KeyValuePair<string, object>> GetClassExtensions(SchemaFilterContext context)
+        {
+            var attribute = context.SystemType.GetTypeInfo().GetCustomAttribute<DynamicSchemaLookupAttribute>();
+            return attribute.GetSwaggerExtensions();
+        }
     }
 }

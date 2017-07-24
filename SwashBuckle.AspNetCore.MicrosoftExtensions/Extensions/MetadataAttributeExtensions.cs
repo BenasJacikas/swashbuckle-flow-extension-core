@@ -5,7 +5,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
 {
     internal static class MetadataAttributeExtensions
     {
-        internal static IEnumerable<KeyValuePair<string, object>> GetMetadataExtensions(this MetadataAttribute attribute)
+        internal static IEnumerable<KeyValuePair<string, object>> GetSwaggerExtensions(this MetadataAttribute attribute)
         {
             if (attribute is null)
                 yield break;
