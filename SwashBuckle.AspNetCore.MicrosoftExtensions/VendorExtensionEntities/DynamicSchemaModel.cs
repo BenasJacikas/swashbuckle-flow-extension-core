@@ -3,16 +3,16 @@ using Newtonsoft.Json;
 
 namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
 {
-    public class DynamicSchemaModel
+    internal class DynamicSchemaModel
     {
         [JsonProperty("operationId")]
-        public string OperationId { get; }
+        internal string OperationId { get; }
         [JsonProperty("value-path")]
-        public string ValuePath { get; }
+        internal string ValuePath { get; }
         [JsonProperty("parameters")]
-        public IDictionary<string, object> Parameters { get; }
+        internal IDictionary<string, object> Parameters { get; }
 
-        public DynamicSchemaModel(string operationId, string valuePath, IDictionary<string, object> parameters)
+        internal DynamicSchemaModel(string operationId, string valuePath, IDictionary<string, object> parameters)
         {
             OperationId = operationId;
             ValuePath = valuePath;

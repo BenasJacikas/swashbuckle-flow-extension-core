@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
-using SwashBuckle.AspNetCore.MicrosoftExtensions.Filters;
+using SwashBuckle.AspNetCore.MicrosoftExtensions;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions;
 
 namespace TestApi
 {
@@ -17,8 +18,7 @@ namespace TestApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-                c.SchemaFilter<SchemaFilter>();
-                c.OperationFilter<OperationFilter>();
+                c.GenerateMicrosoftExtensions();
             });
         }
 

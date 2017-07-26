@@ -8,7 +8,7 @@ using SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions;
 
 namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
 {
-    public class SchemaFilter : ISchemaFilter
+    internal class SchemaFilter : ISchemaFilter
     {
         public void Apply(Schema model, SchemaFilterContext context)
         {

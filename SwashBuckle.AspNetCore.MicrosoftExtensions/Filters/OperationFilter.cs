@@ -10,7 +10,7 @@ using SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions;
 
 namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
 {
-    public class OperationFilter : IOperationFilter
+    internal class OperationFilter : IOperationFilter
     {
         public void Apply(Operation operation, OperationFilterContext context)
         {
