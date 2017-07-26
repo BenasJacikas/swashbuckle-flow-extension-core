@@ -3,7 +3,7 @@ Introduction
 
 This package was created to extend swagger generation in order to support functionality required for MS Flow. [Documentation](https://flow.microsoft.com/en-us/documentation/customapi-how-to-swagger).
 
-It is inspired by [T-Rex](https://github.com/nihaue/TRex/tree/powerapps) 
+Inspired by [T-Rex](https://github.com/nihaue/TRex/tree/powerapps) 
 
 Built upon [Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore).
 
