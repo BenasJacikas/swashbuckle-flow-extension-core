@@ -4,41 +4,33 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes
 {
 
     /// <summary>
-    /// Provides a mechanism to emit the x-ms-dynamic-schema vendor extension for a decorated parameter or method
+    /// Extends swagger definition with vendor extension: x-ms-dynamic-schema
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property | AttributeTargets.Parameter, Inherited = false)]
     public sealed class DynamicSchemaLookupAttribute : Attribute
     {
 
         /// <summary>
-        /// Gets or sets the parameter values to pass to the lookup operation
-        /// (e.g., lookupOpParam={paramNameFromThisOperation}&lookupOpParam2=hardcoded)
+        /// Parameter value to pass to lookup operation
+        /// (e.g., lookupOpParam={paramNameFromThisOperation}&amp;lookupOpParam2=hardcoded)
         /// </summary>
         public string Parameters { get; }
 
         /// <summary>
-        /// Gets or sets the operation Id of the operation that returns the schema current class.
-        /// If you use the Metadata attribute on the lookup operation, use a friendly name without
-        /// spaces and then use the EXACT same name for this value.
+        /// Lookup operation ID, use swagger operation ID of action to call
         /// </summary>
         public string LookupOperation { get; }
 
         /// <summary>
-        /// Gets or sets the name of the property within the lookup operation's output that
-        /// contains the schema that will be used.
+        /// JSON path, where schema class is residing (can't be empty)
         /// </summary>
         public string ValuePath { get; }
 
-        /// <summary>
-        /// Initializes a new instance of the DynamicSchemaLookup attribute using the information supplied
-        /// </summary>
-        /// <param name="lookupOperation">Operation Id of the operation that returns the schema current class.
-        /// If you use the Metadata attribute on the lookup operation, use a friendly name without
-        /// spaces and then use the EXACT same name for this value.</param>
-        /// <param name="valuePath">Name of the property within the lookup operation's output that
-        /// contains the schema that will be used.</param>
+        /// <summary>Constructor</summary>
+        /// <param name="lookupOperation">Operation ID of the operation that returns the schema, use swagger operation ID</param>
+        /// <param name="valuePath"> JSON path where schema is residing (can't be empty)</param>
         /// <param name="parameters">Parameter values to pass to the lookup operation
-        /// (e.g., lookupOpParam={paramNameFromThisOperation}&lookupOpParam2=hardcoded)</param>
+        /// (e.g., lookupOpParam={paramNameFromThisOperation}&amp;lookupOpParam2=hardcoded)</param>
         public DynamicSchemaLookupAttribute(string lookupOperation, string valuePath, string parameters = null)
         {
             LookupOperation = lookupOperation;
