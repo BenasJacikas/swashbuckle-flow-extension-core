@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
-using SwashBuckle.AspNetCore.MicrosoftExtensions;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions;
 
 namespace TestApi

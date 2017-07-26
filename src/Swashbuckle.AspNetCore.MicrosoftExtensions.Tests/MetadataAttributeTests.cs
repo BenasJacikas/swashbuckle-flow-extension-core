@@ -2,11 +2,9 @@ using System.Linq;
 using System.Net.Http;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
-using Newtonsoft.Json;
 using TestApi;
 using TestApi.Models;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
 {

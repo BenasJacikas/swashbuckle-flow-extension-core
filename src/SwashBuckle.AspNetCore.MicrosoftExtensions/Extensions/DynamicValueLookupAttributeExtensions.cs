@@ -1,11 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Dynamic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Primitives;
-using Newtonsoft.Json.Linq;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.Helpers;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities;

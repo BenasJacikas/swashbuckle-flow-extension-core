@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes;
-using SwashBuckle.AspNetCore.MicrosoftExtensions.Filters;
 using TestApi.Models;
 
 namespace TestApi.Controllers

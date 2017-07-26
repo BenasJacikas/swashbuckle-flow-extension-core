@@ -1,5 +1,4 @@
 using System;
-using SwashBuckle.AspNetCore.MicrosoftExtensions.Filters;
 
 namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes
 {
