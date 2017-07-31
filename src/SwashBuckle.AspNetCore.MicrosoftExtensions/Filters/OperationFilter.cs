@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc.Abstractions;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -16,11 +17,18 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
         {
             if(operation is null || context is null)
                 return;
-            
-            var metadataAttribute = context.ApiDescription.ActionAttributes().OfType<MetadataAttribute>().SingleOrDefault();
-            operation.Extensions.AddRange(metadataAttribute.GetSwaggerExtensions());
-            
+
+            operation.Extensions.AddRange(GetOperationExtensions(context.ApiDescription));
+
             ApplyParametersMetadata(operation.Parameters, context.ApiDescription.ActionDescriptor.Parameters);
+        }
+
+        private static IEnumerable<KeyValuePair<string, object>> GetOperationExtensions(ApiDescription apiDescription)
+        {
+            var metadataAttribute = apiDescription.ActionAttributes().OfType<MetadataAttribute>().SingleOrDefault();
+            var dynamicSchemaAttribute = apiDescription.ActionAttributes().OfType<DynamicSchemaLookupAttribute>().SingleOrDefault();
+            var extensions = metadataAttribute.GetSwaggerExtensions();
+            return extensions.Concat(dynamicSchemaAttribute.GetSwaggerExtensions());
         }
 
         private static void ApplyParametersMetadata

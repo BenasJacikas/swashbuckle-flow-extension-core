@@ -9,6 +9,7 @@ namespace TestApi.Controllers
     {
         [HttpGet]
         [Route("api/schema")]
+        [DynamicSchemaLookup("DynamicSchemaOpId", "schema", "param1={test}&param2=test")]
         public DynamicSchemaLookupClass Get
         (
             [DynamicSchemaLookup("DynamicSchemaOpId", "schema", "param1={test}&param2=test")]

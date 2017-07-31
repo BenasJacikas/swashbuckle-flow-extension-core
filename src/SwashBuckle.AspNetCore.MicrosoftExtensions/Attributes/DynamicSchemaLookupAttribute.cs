@@ -6,7 +6,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes
     /// <summary>
     /// Extends swagger definition with vendor extension: x-ms-dynamic-schema
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property | AttributeTargets.Parameter, Inherited = false)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property | AttributeTargets.Parameter | AttributeTargets.Method, Inherited = false)]
     public sealed class DynamicSchemaLookupAttribute : Attribute
     {
 

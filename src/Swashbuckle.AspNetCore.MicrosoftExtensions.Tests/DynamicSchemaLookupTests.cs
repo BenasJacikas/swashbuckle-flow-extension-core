@@ -21,49 +21,59 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
         }
         
         [Fact]
-        public async void ParameterValueLookup()
+        public async void ParameterSchemaLookup()
         {
-            
             var swaggerDoc = await _client.GetSwaggerDocument();
             var operationExtensions = swaggerDoc.Paths["/api/schema"].Get.Parameters[0].VendorExtensions;
 
-            dynamic dynamicValues = operationExtensions["x-ms-dynamic-schema"];
-            Assert.NotNull(dynamicValues);
-            Assert.Equal("DynamicSchemaOpId", (string) dynamicValues.operationId);
-            Assert.Equal("schema", (string) dynamicValues["value-path"]);
-            Assert.Equal("test", (string) dynamicValues.parameters.param1.parameter);
-            Assert.Equal("test", (string) dynamicValues.parameters.param2);
+            dynamic dynamicSchema = operationExtensions["x-ms-dynamic-schema"];
+            Assert.NotNull(dynamicSchema);
+            Assert.Equal("DynamicSchemaOpId", (string) dynamicSchema.operationId);
+            Assert.Equal("schema", (string) dynamicSchema["value-path"]);
+            Assert.Equal("test", (string) dynamicSchema.parameters.param1.parameter);
+            Assert.Equal("test", (string) dynamicSchema.parameters.param2);
         }
         
         [Fact]
-        public async void PropertyValueLookup()
+        public async void PropertySchemaLookup()
         {
-            
             var swaggerDoc = await _client.GetSwaggerDocument();
             var operationExtensions = swaggerDoc.Definitions["DynamicSchemaLookupClass"].Properties["lookupProperty"].Extensions;
 
-            dynamic dynamicValues = operationExtensions["x-ms-dynamic-schema"];
-            Assert.NotNull(dynamicValues);
-            Assert.Equal("DynamicSchemaOpId", (string) dynamicValues.operationId);
-            Assert.Equal("schema", (string) dynamicValues["value-path"]);
-            Assert.Equal("test", (string) dynamicValues.parameters.param1.parameter);
-            Assert.Equal("test", (string) dynamicValues.parameters.param2);
+            dynamic dynamicSchema = operationExtensions["x-ms-dynamic-schema"];
+            Assert.NotNull(dynamicSchema);
+            Assert.Equal("DynamicSchemaOpId", (string) dynamicSchema.operationId);
+            Assert.Equal("schema", (string) dynamicSchema["value-path"]);
+            Assert.Equal("test", (string) dynamicSchema.parameters.param1.parameter);
+            Assert.Equal("test", (string) dynamicSchema.parameters.param2);
         }
         
         [Fact]
-        public async void ClassValueLookup()
+        public async void ClassSchemaLookup()
         {
-            
             var swaggerDoc = await _client.GetSwaggerDocument();
             var operationExtensions = swaggerDoc.Definitions["DynamicSchemaLookupClass"].Extensions;
 
-            dynamic dynamicValues = operationExtensions["x-ms-dynamic-schema"];
-            Assert.NotNull(dynamicValues);
-            Assert.Equal("DynamicSchemaOpId", (string) dynamicValues.operationId);
-            Assert.Equal("schema", (string) dynamicValues["value-path"]);
-            Assert.Equal("test", (string) dynamicValues.parameters.param1.parameter);
-            Assert.Equal("test", (string) dynamicValues.parameters.param2);
+            dynamic dynamicSchema = operationExtensions["x-ms-dynamic-schema"];
+            Assert.NotNull(dynamicSchema);
+            Assert.Equal("DynamicSchemaOpId", (string) dynamicSchema.operationId);
+            Assert.Equal("schema", (string) dynamicSchema["value-path"]);
+            Assert.Equal("test", (string) dynamicSchema.parameters.param1.parameter);
+            Assert.Equal("test", (string) dynamicSchema.parameters.param2);
         }
-        
+
+        [Fact]
+        public async void OperationSchemaLookup()
+        {
+            var swaggerDoc = await _client.GetSwaggerDocument();
+            var operationExtensions = swaggerDoc.Paths["/api/schema"].Get.VendorExtensions;
+
+            dynamic dynamicSchema = operationExtensions["x-ms-dynamic-schema"];
+            Assert.NotNull(dynamicSchema);
+            Assert.Equal("DynamicSchemaOpId", (string) dynamicSchema.operationId);
+            Assert.Equal("schema", (string) dynamicSchema["value-path"]);
+            Assert.Equal("test", (string) dynamicSchema.parameters.param1.parameter);
+            Assert.Equal("test", (string) dynamicSchema.parameters.param2);
+        }
     }
 }
