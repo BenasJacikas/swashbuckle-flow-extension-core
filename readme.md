@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/BenasJacikas/swasbuckle-flow-extension-core.svg?branch=master)](https://travis-ci.org/BenasJacikas/swasbuckle-flow-extension-core)
+
 Introduction
 ============
 
