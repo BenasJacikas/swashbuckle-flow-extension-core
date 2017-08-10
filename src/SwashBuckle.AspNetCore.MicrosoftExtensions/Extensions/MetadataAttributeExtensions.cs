@@ -11,8 +11,10 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
                 yield break;
             
             yield return new KeyValuePair<string, object>(Constants.XMsVisibility, attribute.Visibility.ToString().ToLowerInvariant());
-            yield return new KeyValuePair<string, object>(Constants.XMsSummary, attribute.Summary);
-            yield return new KeyValuePair<string, object>(Constants.XMsDescription, attribute.Description);
+            if (attribute.Summary != null)
+                yield return new KeyValuePair<string, object>(Constants.XMsSummary, attribute.Summary);
+            if (attribute.Description != null)
+                yield return new KeyValuePair<string, object>(Constants.XMsDescription, attribute.Description);
         }
     }
 }

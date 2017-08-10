@@ -59,7 +59,17 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
             //Assert.Null(parameterExtensions["x-ms-visibility"]);
             Assert.Equal("FriendlyParameter", parameterExtensions["x-ms-summary"]);
             Assert.Equal("ParameterDescription", parameterExtensions["x-ms-description"]);
+        }
+        
+        [Fact]
+        public async void ActionMetadataWithNullValues()
+        {
+            var swaggerDoc = await _client.GetSwaggerDocument();
+            var operationExtensions = swaggerDoc.Paths["/api/MetadataAttributeWithNullSummaryAndDescription"].Post.VendorExtensions;
 
+            Assert.Equal("important", operationExtensions["x-ms-visibility"]);
+            Assert.False(operationExtensions.ContainsKey("x-ms-summary"));
+            Assert.False(operationExtensions.ContainsKey("x-ms-description"));
         }
     }
 }
