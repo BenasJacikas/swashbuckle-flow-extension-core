@@ -27,6 +27,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
         {
             var metadataAttribute = apiDescription.ActionAttributes().OfType<MetadataAttribute>().SingleOrDefault();
             var dynamicSchemaAttribute = apiDescription.ActionAttributes().OfType<DynamicSchemaLookupAttribute>().SingleOrDefault();
+
             var extensions = metadataAttribute.GetSwaggerExtensions();
             return extensions.Concat(dynamicSchemaAttribute.GetSwaggerExtensions());
         }
@@ -60,6 +61,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
         private static IEnumerable<KeyValuePair<string, object>> GetParameterExtensions(ICustomAttributeProvider attributeProvider)
         {
             return GetValueLookupProperties(attributeProvider)
+                .Concat(GetValueLookupCapabilityProperties(attributeProvider))
                 .Concat(GetMetadataProperties(attributeProvider))
                 .Concat(GetSchemaLookupProperties(attributeProvider));
         }
@@ -67,6 +69,12 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
         private static IEnumerable<KeyValuePair<string, object>> GetValueLookupProperties(ICustomAttributeProvider attributeProvider)
         {
             var attribute = attributeProvider.GetCustomAttributes(typeof(DynamicValueLookupAttribute), true).SingleOrDefault() as DynamicValueLookupAttribute;
+            return attribute.GetSwaggerExtensions();
+        }
+
+        private static IEnumerable<KeyValuePair<string, object>> GetValueLookupCapabilityProperties (ICustomAttributeProvider attributeProvider)
+        {
+            var attribute = attributeProvider.GetCustomAttributes(typeof(DynamicValueLookupCapabilityAttribute), true).SingleOrDefault() as DynamicValueLookupCapabilityAttribute;
             return attribute.GetSwaggerExtensions();
         }
 

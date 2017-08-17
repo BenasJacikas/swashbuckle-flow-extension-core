@@ -9,5 +9,6 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions
         internal const string XMsDynamicValueLookup = "x-ms-dynamic-values";
         internal const string XMsDynamicSchemaLookup = "x-ms-dynamic-schema";
         internal const string Parameter = "parameter";
+        internal const string XMsCapabilities = "x-ms-capabilities";
     }
 }
