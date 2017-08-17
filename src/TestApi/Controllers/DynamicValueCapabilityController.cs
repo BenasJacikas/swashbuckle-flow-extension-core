@@ -9,7 +9,7 @@ namespace TestApi.Controllers
         [Route("api/capability")]
         public DynamicValueLookupCapabilityAttribute Get 
         (
-            [DynamicValueLookupCapability("file-picker", "id", "name", parameters: "test=static&test2={dynamic}")]
+            [DynamicValueLookupCapability("file-picker", "id", parameters: "isFolder=false")]
             string dynamicValue
         )
         {

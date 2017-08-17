@@ -4,7 +4,7 @@ using SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities;
 
 namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
 {
-    public class CapabilityFilter : IDocumentFilter
+    internal class CapabilityFilter : IDocumentFilter
     {
         private readonly FilePickerCapabilityModel m_filePickerCapability;
 

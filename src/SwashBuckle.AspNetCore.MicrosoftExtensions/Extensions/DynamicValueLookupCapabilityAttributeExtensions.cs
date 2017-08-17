@@ -5,7 +5,7 @@ using SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities;
 
 namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
 {
-    public static class DynamicValueLookupCapabilityAttributeExtensions
+    internal static class DynamicValueLookupCapabilityAttributeExtensions
     {
         internal static IEnumerable<KeyValuePair<string, object>> GetSwaggerExtensions(this DynamicValueLookupCapabilityAttribute attribute)
         {

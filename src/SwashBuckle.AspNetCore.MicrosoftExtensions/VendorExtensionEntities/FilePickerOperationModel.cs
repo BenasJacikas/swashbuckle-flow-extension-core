@@ -6,10 +6,10 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
     public class FilePickerOperationModel
     {
         [JsonProperty("operation-id")]
-        public string OperationId { get; set; }
+        public string OperationId { get; }
 
         [JsonProperty("parameters")]
-        public Dictionary<string, FilePickerParameterValue> Parameters { get; set; }
+        public Dictionary<string, FilePickerParameterValue> Parameters { get; }
 
         /// <summary>
         /// Initializes a new instance of file picker operation with given parameters
@@ -36,7 +36,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
     public class FilePickerParameterValue
     {
         [JsonProperty("value-property")]
-        public string Value { get; set; }
+        public string Value { get; }
 
         public FilePickerParameterValue(string value)
         {

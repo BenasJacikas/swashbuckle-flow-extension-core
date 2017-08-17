@@ -5,19 +5,19 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
     public class FilePickerCapabilityModel
     {
         [JsonProperty("open")]
-        public FilePickerOperationModel Open { get; set; }
+        public FilePickerOperationModel Open { get; }
 
         [JsonProperty("browse")]
-        public FilePickerOperationModel Browse { get; set; }
+        public FilePickerOperationModel Browse { get; }
 
         [JsonProperty("value-title")]
-        public string ValueTitle { get; set; }
+        public string ValueTitle { get; }
 
         [JsonProperty("value-folder-property")]
-        public string ValueFolderProperty { get; set; }
+        public string ValueFolderProperty { get; }
 
         [JsonProperty("value-media-property")]
-        public string ValueMediaProperty { get; set; }
+        public string ValueMediaProperty { get; }
 
         /// <summary>
         /// Initializes a new instance of FilePickerCapability with information supplied
@@ -41,8 +41,6 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
         )
         {
             Open = open;
-            //remove parameters from open, they need to be in x-ms-dynamic-values
-            Open.Parameters = null;
             Browse = browse;
             ValueTitle = valueTitle;
             ValueFolderProperty = valueFolderProperty;
