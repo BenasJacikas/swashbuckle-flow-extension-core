@@ -22,8 +22,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
         /// Lookup operation ID, use swagger operation ID of action to call
         /// </param>
         /// <param name="parameters">
-        /// Parameter value to pass to lookup operation
-        /// (e.g., lookupOpParam={paramNameFromThisOperation}&amp;lookupOpParam2=hardcoded)
+        /// Parameter value to pass to operation
         /// </param>
         public FilePickerOperationModel (string operationId, Dictionary<string, string> parameters)
         {

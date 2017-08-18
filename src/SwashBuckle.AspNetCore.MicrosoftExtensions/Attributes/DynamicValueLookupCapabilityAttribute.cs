@@ -24,7 +24,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes
         public string ValueTitle { get; }
 
         /// <summary>
-        /// Parameter value to pass to lookup operation
+        /// Parameter value to pass to capability
         /// (e.g., capabilityOpParam={paramNameFromThisOperation}&amp;capabilityOpParam2=hardcoded)
         /// </summary>
         public string Parameters { get; }
@@ -39,7 +39,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes
         /// User facing value path, these values will show up for user to choose.
         /// </param>
         /// <param name="parameters">
-        /// Parameter value to pass to lookup operation
+        /// Parameter value to pass to capability
         /// (e.g., capabilityOpParam={paramNameFromThisOperation}&amp;capabilityOpParam2=hardcoded)
         /// </param>
         public DynamicValueLookupCapabilityAttribute (string capability, string valuePath, string valueTitle = null, string parameters = null)
