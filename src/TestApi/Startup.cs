@@ -28,11 +28,11 @@ namespace TestApi
         {
             return new FilePickerCapabilityModel
             (
-                new FilePickerOperationModel("Initialoperation", null),
-                new FilePickerOperationModel("BrowsingOperation", new Dictionary<string, string> {{"test", "value"}}),
+                new FilePickerOperationModel("InitialOperation", null),
+                new FilePickerOperationModel("BrowsingOperation", new Dictionary<string, string> {{"Id", "Id"}}),
                 "Name",
                 "IsFolder",
-                null
+                "MediaType"
             );
         }
 

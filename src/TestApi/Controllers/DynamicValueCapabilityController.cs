@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes;
+using TestApi.Models;
 
 namespace TestApi.Controllers
 {
@@ -7,9 +8,9 @@ namespace TestApi.Controllers
     {
         [HttpGet]
         [Route("api/capability")]
-        public DynamicValueLookupCapabilityAttribute Get 
+        public DynamicValueLookupCapabilityClass Get 
         (
-            [DynamicValueLookupCapability("file-picker", "id", parameters: "isFolder=false")]
+            [DynamicValueLookupCapability("capabilityName", "id", "name", parameters: "isFolder=true&test=static&test2={dynamic}")]
             string dynamicValue
         )
         {
