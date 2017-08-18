@@ -5,18 +5,27 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
 {
     public class FilePickerOperationModel
     {
+        /// <summary>
+        /// Lookup operation ID, use swagger operation ID of action to call
+        /// </summary>
         [JsonProperty("operation-id")]
         public string OperationId { get; }
 
+        /// <summary>
+        /// Parameter value to pass to lookup operation
+        /// (e.g., lookupOpParam={paramNameFromThisOperation}&amp;lookupOpParam2=hardcoded)
+        /// </summary>
         [JsonProperty("parameters")]
         public Dictionary<string, FilePickerParameterValue> Parameters { get; }
 
-        /// <summary>
-        /// Initializes a new instance of file picker operation with given parameters
-        /// </summary>
-        /// <param name="operationId">Id of operation</param>
-        /// <param name="parameters">Parameter name and value pair</param>
-        public FilePickerOperationModel(string operationId, Dictionary<string, string> parameters)
+        /// <param name="operationId">
+        /// Lookup operation ID, use swagger operation ID of action to call
+        /// </param>
+        /// <param name="parameters">
+        /// Parameter value to pass to lookup operation
+        /// (e.g., lookupOpParam={paramNameFromThisOperation}&amp;lookupOpParam2=hardcoded)
+        /// </param>
+        public FilePickerOperationModel (string operationId, Dictionary<string, string> parameters)
         {
             //no operation - dont create parameters
             if (string.IsNullOrEmpty(operationId))
