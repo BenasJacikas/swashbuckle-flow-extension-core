@@ -19,12 +19,12 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
         }
 
         private void AddFilePickerCapabilityExtension(SwaggerDocument swaggerDoc)
-            {
+        {
             swaggerDoc.Extensions.Add
-                (
+            (
                 Constants.XMsCapabilities,
                 m_filePickerCapability
-                );
-            }
+            );
+        }
     }
 }

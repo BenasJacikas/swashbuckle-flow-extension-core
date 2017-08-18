@@ -27,7 +27,6 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
         {
             var metadataAttribute = apiDescription.ActionAttributes().OfType<MetadataAttribute>().SingleOrDefault();
             var dynamicSchemaAttribute = apiDescription.ActionAttributes().OfType<DynamicSchemaLookupAttribute>().SingleOrDefault();
-
             var extensions = metadataAttribute.GetSwaggerExtensions();
             return extensions.Concat(dynamicSchemaAttribute.GetSwaggerExtensions());
         }

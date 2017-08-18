@@ -20,7 +20,6 @@ namespace TestApi
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
                 c.GenerateMicrosoftExtensions(GetFilePicker());
-                //c.GenerateMicrosoftExtensions();
             });
         }
 
