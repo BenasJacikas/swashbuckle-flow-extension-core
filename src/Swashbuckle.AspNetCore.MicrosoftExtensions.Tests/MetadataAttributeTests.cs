@@ -30,12 +30,12 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
             var definitions = swaggerDoc.Definitions;
 
             // Assert
-            var testy = definitions.First(x => x.Key == nameof(MetdataAttributeClass)).Value;
+            var testy = definitions.First(x => x.Key == nameof(MetadataAttributeClass)).Value;
             var testyProperty = testy.Properties.Single();
             Assert.Equal(testyProperty.Key, "customName");
             Assert.Equal("advanced", testyProperty.Value.Extensions["x-ms-visibility"]);
             Assert.Equal("Friendly", testyProperty.Value.Extensions["x-ms-summary"]);
-            Assert.Equal("Description", testyProperty.Value.Extensions["x-ms-description"]);
+            Assert.Equal("Description", testyProperty.Value.Description);
         }
 
         [Fact]
@@ -45,8 +45,8 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
             var operationExtensions = swaggerDoc.Paths["/api/MetadataAttribute"].Post.VendorExtensions;
 
             Assert.Equal("important", operationExtensions["x-ms-visibility"]);
-            Assert.Equal("FriendlyAction", operationExtensions["x-ms-summary"]);
-            Assert.Equal("ActionDescription", operationExtensions["x-ms-description"]);
+            Assert.Equal("FriendlyAction", operationExtensions["summary"]);
+            Assert.Equal("ActionDescription", operationExtensions["description"]);
         }
         
         [Fact]
@@ -58,7 +58,7 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
             //TODO:
             //Assert.Null(parameterExtensions["x-ms-visibility"]);
             Assert.Equal("FriendlyParameter", parameterExtensions["x-ms-summary"]);
-            Assert.Equal("ParameterDescription", parameterExtensions["x-ms-description"]);
+            Assert.Equal("ParameterDescription", parameterExtensions["description"]);
         }
         
         [Fact]
@@ -68,8 +68,8 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
             var operationExtensions = swaggerDoc.Paths["/api/MetadataAttributeWithNullSummaryAndDescription"].Post.VendorExtensions;
 
             Assert.Equal("important", operationExtensions["x-ms-visibility"]);
-            Assert.False(operationExtensions.ContainsKey("x-ms-summary"));
-            Assert.False(operationExtensions.ContainsKey("x-ms-description"));
+            Assert.False(operationExtensions.ContainsKey("summary"));
+            Assert.False(operationExtensions.ContainsKey("description"));
         }
     }
 }

@@ -9,7 +9,7 @@ namespace TestApi.Controllers
     {
         [HttpPost]
         [Metadata("FriendlyAction", "ActionDescription", VisibilityType.Important)]
-        public MetdataAttributeClass Post([FromBody][Metadata("FriendlyParameter", "ParameterDescription")] string value)
+        public MetadataAttributeClass Post([FromBody][Metadata("FriendlyParameter", "ParameterDescription")] string value)
         {
             return null;
         }
@@ -17,7 +17,7 @@ namespace TestApi.Controllers
         [HttpPost]
         [Metadata(null, null, VisibilityType.Important)]
         [Route("/api/MetadataAttributeWithNullSummaryAndDescription")]
-        public MetdataAttributeClass PostNull([FromBody][Metadata("FriendlyParameter", "ParameterDescription")] string value)
+        public MetadataAttributeClass PostNull([FromBody][Metadata("FriendlyParameter", "ParameterDescription")] string value)
         {
             return null;
         }
