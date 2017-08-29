@@ -44,7 +44,7 @@ Generated swagger:
             "readOnly": true,
             "x-ms-visibility": "advanced",
             "x-ms-summary": "Summary",
-            "x-ms-description": "Description"
+            "description": "Description"
         }
     }
 }
