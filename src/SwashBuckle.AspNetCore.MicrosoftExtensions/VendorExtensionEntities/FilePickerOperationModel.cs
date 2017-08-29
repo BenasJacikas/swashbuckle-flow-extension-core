@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using SwashBuckle.AspNetCore.MicrosoftExtensions.Helpers;
 
 namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
 {
