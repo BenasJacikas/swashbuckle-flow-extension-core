@@ -31,10 +31,8 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Helpers
             {
                 case "true":
                     return new KeyValuePair<string, object>(parameter.Key, true);
-                    break;
                 case "false":
                     return new KeyValuePair<string, object>(parameter.Key, false);
-                    break;
                 default:
                     return new KeyValuePair<string, object>(parameter.Key, parameter.Value[0]);
             }
