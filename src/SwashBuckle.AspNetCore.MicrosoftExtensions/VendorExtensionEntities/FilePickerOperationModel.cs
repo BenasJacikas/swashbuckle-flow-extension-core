@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
@@ -34,13 +35,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
                 return;
 
             OperationId = operationId;
-            if (parameters == null)
-                return;
-            Parameters = new Dictionary<string, FilePickerParameterValue>();
-            foreach (var param in parameters)
-            {
-                Parameters.Add(param.Key, new FilePickerParameterValue(param.Value));
-            }
+            Parameters = parameters?.ToDictionary(x => x.Key, x => new FilePickerParameterValue(x.Value));
         }
     }
 

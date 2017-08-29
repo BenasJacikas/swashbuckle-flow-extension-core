@@ -28,6 +28,8 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
         /// <summary>
         /// Backend value from either of operations (Open or Browse) output
         /// used to determine whether the output is a folder or a file
+        /// Backend value should be a bool, if it's set to anything (not null)
+        /// then MS Flow registers it as true
         /// </summary>
         [JsonProperty("value-folder-property")]
         public string ValueFolderProperty { get; }

@@ -26,6 +26,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Helpers
                 );
             }
 
+            // parse true/false values as bools
             switch (parameter.Value[0])
             {
                 case "true":
