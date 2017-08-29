@@ -25,6 +25,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
         /// Dictionary key - parameter name in lookup operation
         /// Dictionary value - property from object, returned by lookup operation,
         /// whose value will be used
+        /// if null - don't generate parameters section in swagger
         /// </param>
         public FilePickerOperationModel (string operationId, Dictionary<string, string> parameters)
         {
