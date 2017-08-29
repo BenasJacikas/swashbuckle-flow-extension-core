@@ -19,13 +19,12 @@ namespace TestApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-                c.GenerateMicrosoftExtensions(GetFilePicker());
+                c.GenerateMicrosoftExtensions(GetFilePicker);
             });
         }
 
-        private FilePickerCapabilityModel GetFilePicker()
-        {
-            return new FilePickerCapabilityModel
+        private FilePickerCapabilityModel GetFilePicker =>
+            new FilePickerCapabilityModel
             (
                 new FilePickerOperationModel("InitialOperation", null),
                 new FilePickerOperationModel("BrowsingOperation", new Dictionary<string, string> {{"Id", "Id"}}),
@@ -33,7 +32,7 @@ namespace TestApi
                 "IsFolder",
                 "MediaType"
             );
-        }
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure

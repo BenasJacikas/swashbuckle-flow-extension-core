@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.Helpers;
 
 namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
 {
@@ -13,7 +14,6 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
 
         /// <summary>
         /// Parameter value to pass to lookup operation
-        /// (e.g., lookupOpParam={paramNameFromThisOperation}&amp;lookupOpParam2=hardcoded)
         /// </summary>
         [JsonProperty("parameters")]
         public Dictionary<string, FilePickerParameterValue> Parameters { get; }
@@ -23,6 +23,9 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
         /// </param>
         /// <param name="parameters">
         /// Parameter value to pass to operation
+        /// Dictionary key - parameter name in lookup operation
+        /// Dictionary value - property from object, returned by lookup operation,
+        /// whose value will be used
         /// </param>
         public FilePickerOperationModel (string operationId, Dictionary<string, string> parameters)
         {

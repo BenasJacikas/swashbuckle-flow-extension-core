@@ -8,7 +8,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
     public class FilePickerCapabilityModel
     {
         /// <summary>
-        /// Operation which will be called when you initially when you start picking folder/file
+        /// Operation which will be called when you initially start picking folder/file
         /// </summary>
         [JsonProperty("open")]
         public FilePickerOperationModel Open { get; }
