@@ -19,11 +19,11 @@ namespace TestApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-                c.GenerateMicrosoftExtensions(GetFilePicker);
+                c.GenerateMicrosoftExtensions(FilePicker);
             });
         }
 
-        private FilePickerCapabilityModel GetFilePicker =>
+        private FilePickerCapabilityModel FilePicker =>
             new FilePickerCapabilityModel
             (
                 new FilePickerOperationModel("InitialOperation", null),
