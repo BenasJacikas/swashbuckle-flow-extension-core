@@ -24,11 +24,12 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
         public async void ParameterValueLookup()
         {
             var swaggerDoc = await _client.GetSwaggerDocument();
-            dynamic dynamicSchema = swaggerDoc.VendorExtensions["x-ms-capabilities"];
+            dynamic dynamicSchemaCapabilitiesSection = swaggerDoc.VendorExtensions["x-ms-capabilities"];
+            dynamic dynamicSchema = dynamicSchemaCapabilitiesSection["file-picker"];
 
             Assert.NotNull(dynamicSchema);
-            Assert.Equal("InitialOperation", (string) dynamicSchema.open["operation-id"]);
-            Assert.Equal("BrowsingOperation", (string) dynamicSchema.browse["operation-id"]);
+            Assert.Equal("InitialOperation", (string) dynamicSchema.open["operationId"]);
+            Assert.Equal("BrowsingOperation", (string) dynamicSchema.browse["operationId"]);
             Assert.Equal("Id", (string) dynamicSchema.browse.parameters.Id["value-property"]);
             Assert.Equal("Name", (string) dynamicSchema["value-title"]);
             Assert.Equal("IsFolder", (string) dynamicSchema["value-folder-property"]);

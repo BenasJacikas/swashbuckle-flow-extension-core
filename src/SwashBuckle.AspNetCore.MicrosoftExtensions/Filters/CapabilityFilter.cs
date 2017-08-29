@@ -1,4 +1,5 @@
-﻿using Swashbuckle.AspNetCore.Swagger;
+﻿using System.Collections.Generic;
+using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities;
 
@@ -23,7 +24,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Filters
             swaggerDoc.Extensions.Add
             (
                 Constants.XMsCapabilities,
-                m_filePickerCapability
+                new Dictionary<string, object> {{Constants.FilePicker, m_filePickerCapability}}
             );
         }
     }

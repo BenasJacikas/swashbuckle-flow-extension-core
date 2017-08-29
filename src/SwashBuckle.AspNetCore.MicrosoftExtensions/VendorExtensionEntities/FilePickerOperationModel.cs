@@ -9,7 +9,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities
         /// <summary>
         /// Lookup operation ID, use swagger operation ID of action to call
         /// </summary>
-        [JsonProperty("operation-id")]
+        [JsonProperty("operationId")]
         public string OperationId { get; }
 
         /// <summary>
