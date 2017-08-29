@@ -118,40 +118,40 @@ public class DynamicValueCapabilityController : Controller
 Swagger:
 ```
 "/api/capability": {
-	"get": {
-		"tags": [
-			"DynamicValueCapability"
-		],
-		"operationId": "ApiCapabilityGet",
-		"parameters": [
-			{
-				"name": "dynamicValue",
-				"in": "query",
-				"required": false,
-				"type": "string",
-				"x-ms-dynamic-values": {
-					"capability": "capabilityName",
-					"value-path": "id",
-					"value-title": "name",
-					"parameters": {
-						"isFolder": true,
-						"test": "static",
-						"test2": {
-							"parameter": "dynamic"
-						}
-					}
-				}
-			}
-		],
-		"responses": {
-			"200": {
-				"description": "Success",
-				"schema": {
-					"$ref": "#/definitions/DynamicValueLookupCapabilityClass"
-				}
-			}
-		}
-	}
+    "get": {
+        "tags": [
+            "DynamicValueCapability"
+        ],
+        "operationId": "ApiCapabilityGet",
+        "parameters": [
+            {
+                "name": "dynamicValue",
+                "in": "query",
+                "required": false,
+                "type": "string",
+                "x-ms-dynamic-values": {
+                    "capability": "capabilityName",
+                    "value-path": "id",
+                    "value-title": "name",
+                    "parameters": {
+                        "isFolder": true,
+                        "test": "static",
+                        "test2": {
+                            "parameter": "dynamic"
+                        }
+                    }
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Success",
+                "schema": {
+                    "$ref": "#/definitions/DynamicValueLookupCapabilityClass"
+                }
+            }
+        }
+    }
 }
 ```
 
@@ -191,41 +191,41 @@ Code:
 ```
 public void ConfigureServices(IServiceCollection services)
 {
-	services.AddMvc();
+    services.AddMvc();
 
-	var filePicker = new FilePickerCapabilityModel
-	(
-		new FilePickerOperationModel("InitialOperation", null),
-		new FilePickerOperationModel("BrowsingOperation", new Dictionary<string, string> {{"Id", "Id"}}),
-		"Name",
-		"IsFolder",
-		"MediaType"
-	);
-	
-	services.AddSwaggerGen(c =>
-	{
-		c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-		c.GenerateMicrosoftExtensions(filePicker);
-	});
+    var filePicker = new FilePickerCapabilityModel
+    (
+        new FilePickerOperationModel("InitialOperation", null),
+        new FilePickerOperationModel("BrowsingOperation", new Dictionary<string, string> {{"Id", "Id"}}),
+        "Name",
+        "IsFolder",
+        "MediaType"
+    );
+    
+    services.AddSwaggerGen(c =>
+    {
+        c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+        c.GenerateMicrosoftExtensions(filePicker);
+    });
 }
 ```
 Swagger:
 ```
 "x-ms-capabilities": {
-	"open": {
-		"operation-id": "InitialOperation"
-	},
-	"browse": {
-		"operation-id": "BrowsingOperation",
-		"parameters": {
-			"Id": {
-				"value-property": "Id"
-			}
-		}
-	},
-	"value-title": "Name",
-	"value-folder-property": "IsFolder",
-	"value-media-property": "MediaType"
+    "open": {
+        "operation-id": "InitialOperation"
+    },
+    "browse": {
+        "operation-id": "BrowsingOperation",
+        "parameters": {
+            "Id": {
+                "value-property": "Id"
+            }
+        }
+    },
+    "value-title": "Name",
+    "value-folder-property": "IsFolder",
+    "value-media-property": "MediaType"
 }
 ```
 
