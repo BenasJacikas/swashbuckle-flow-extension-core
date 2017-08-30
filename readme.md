@@ -19,7 +19,7 @@ Install-Package Swashbuckle.AspNetCore.MicrosoftExtensions
 
 ## Metadata
 Metadata attribute can be used for methods, parameters and properties
-### Example
+### Example definition
 Code:
 ```
 public class MetdataAttributeClass
@@ -48,6 +48,30 @@ Generated swagger:
         }
     }
 }
+```
+
+### Example controller
+Code:
+```
+[Route("api/MetadataAttribute")]
+    public class MetadataAttributeController : Controller
+    {
+        [HttpPost]
+        [Metadata("FriendlyAction", "ActionDescription", VisibilityType.Important)]
+        public MetadataAttributeClass Post([FromBody][Metadata("FriendlyParameter", "ParameterDescription")] string value)
+        { ... }
+}
+```
+
+Generated swagger:
+```
+"/api/MetadataAttribute": {
+    "post": {
+        "x-ms-visibility": "important",
+        "summary": "FriendlyAction",
+        "description": "ActionDescription",
+        "parameters": [...],
+        ...
 ```
 
 ## Dynamic value lookup
