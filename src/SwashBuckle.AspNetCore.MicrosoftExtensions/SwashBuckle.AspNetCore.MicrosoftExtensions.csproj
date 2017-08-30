@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
     <Title>Swashbuckle extensions for MS Flow/LogicApps/PowerApps</Title>
-    <PackageProjectUrl>https://github.com/BenasJacikas/swasbuckle-flow-extension-core</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/BenasJacikas/swashbuckle-flow-extension-core</PackageProjectUrl>
     <PackageLicenseUrl>http://www.wtfpl.net/</PackageLicenseUrl>
     <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
     <Description>This library is to be used to automatically generate extensions for Microsofts Flow/LogicApps/PowerApps designers</Description>
