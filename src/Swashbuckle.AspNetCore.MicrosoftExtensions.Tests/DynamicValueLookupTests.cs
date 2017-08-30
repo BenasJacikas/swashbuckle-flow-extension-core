@@ -8,7 +8,6 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
 {
     public class DynamicValueLookupTests
     {
-        
         private readonly HttpClient _client;
 
         public DynamicValueLookupTests()
@@ -24,7 +23,6 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
         [Fact]
         public async void ParameterValueLookup()
         {
-            
             var swaggerDoc = await _client.GetSwaggerDocument();
             var operationExtensions = swaggerDoc.Paths["/api/dynamic"].Get.Parameters[0].VendorExtensions;
             
@@ -35,13 +33,11 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
             Assert.Equal("name", (string) dynamicValues["value-title"]);
             Assert.Equal("static", (string) dynamicValues.parameters.test);
             Assert.Equal("dynamic", (string) dynamicValues.parameters.test2.parameter);
-
         }
         
         [Fact]
         public async void PropertyValueLookup()
         {
-            
             var swaggerDoc = await _client.GetSwaggerDocument();
             var operationExtensions = swaggerDoc.Definitions["DynamicValueLookupClass"].Properties["lookupProperty"].Extensions;
             
@@ -53,7 +49,6 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
             Assert.Equal("objects", (string) dynamicValues["value-collection"]);
             Assert.Equal("test", (string) dynamicValues.parameters.param1.parameter);
             Assert.Equal("test", (string) dynamicValues.parameters.param2);
-
         }
     }
 }

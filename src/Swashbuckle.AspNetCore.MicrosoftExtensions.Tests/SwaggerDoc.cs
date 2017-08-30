@@ -10,6 +10,7 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
         public Info Info;
         public IDictionary<string, Parameter> Parameters;
         public IDictionary<string, PathItem> Paths;
+        [JsonExtensionData]
         public Dictionary<string, object> VendorExtensions;
     }
 

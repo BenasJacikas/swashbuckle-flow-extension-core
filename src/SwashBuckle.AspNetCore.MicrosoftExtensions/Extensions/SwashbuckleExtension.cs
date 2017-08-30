@@ -1,5 +1,6 @@
 ﻿using Swashbuckle.AspNetCore.SwaggerGen;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.Filters;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities;
 
 namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
 {
@@ -11,10 +12,14 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
         /// <summary>
         /// Enables microsoft extension generation
         /// </summary>
-        public static void GenerateMicrosoftExtensions(this SwaggerGenOptions options)
+        /// <param name="filePicker">File picker capability used for microsoft extension generation</param>
+        public static void GenerateMicrosoftExtensions(this SwaggerGenOptions options, FilePickerCapabilityModel filePicker = null)
         {
             options.OperationFilter<OperationFilter>();
             options.SchemaFilter<SchemaFilter>();
+
+            if (filePicker != null)
+                options.DocumentFilter<CapabilityFilter>(filePicker);
         }
     }
 }
