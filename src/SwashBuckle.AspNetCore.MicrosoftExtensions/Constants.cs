@@ -11,6 +11,6 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions
         internal const string Parameter = "parameter";
         internal const string XMsCapabilities = "x-ms-capabilities";
         internal const string FilePicker = "file-picker";
-		internal const string Summary = "summary";
+        internal const string Summary = "summary";
     }
 }
