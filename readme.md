@@ -185,6 +185,7 @@ Swagger:
 ```
 
 ## File picker capability
+#### Note: file picker design is not final, might change in the future from Microsoft's side
 File picker capability can be used in GenerateMicrosoftExtensions method
 ### Examples
 Code:
