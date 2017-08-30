@@ -25,7 +25,17 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Helpers
                     new Dictionary<string, string> {{Constants.Parameter, matches.Groups[1].Value}}
                 );
             }
-            return new KeyValuePair<string, object>(parameter.Key, parameter.Value[0]);
+
+            // parse true/false values as bools
+            switch (parameter.Value[0])
+            {
+                case "true":
+                    return new KeyValuePair<string, object>(parameter.Key, true);
+                case "false":
+                    return new KeyValuePair<string, object>(parameter.Key, false);
+                default:
+                    return new KeyValuePair<string, object>(parameter.Key, parameter.Value[0]);
+            }
         }
     }
 }

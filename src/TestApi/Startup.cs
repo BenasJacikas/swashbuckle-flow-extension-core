@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions;
+using SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities;
 
 namespace TestApi
 {
@@ -17,17 +19,28 @@ namespace TestApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
-                c.GenerateMicrosoftExtensions();
+                c.GenerateMicrosoftExtensions(FilePicker);
             });
         }
 
+        private FilePickerCapabilityModel FilePicker =>
+            new FilePickerCapabilityModel
+            (
+                new FilePickerOperationModel("InitialOperation", null),
+                new FilePickerOperationModel("BrowsingOperation", new Dictionary<string, string> {{"Id", "Id"}}),
+                "Name",
+                "IsFolder",
+                "MediaType"
+            );
+        
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure
-            (
+        (
             IApplicationBuilder app, 
             IHostingEnvironment env,
             ILoggerFactory loggerFactory
-                )
+        )
         {
             loggerFactory
                 .AddConsole();

@@ -25,6 +25,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
             schema.Extensions.AddRange(GetMetadataExtensions(jsonProperty.AttributeProvider));
             schema.Extensions.AddRange(GetValueLookupProperties(jsonProperty.AttributeProvider));
             schema.Extensions.AddRange(GetSchemaLookupProperties(jsonProperty.AttributeProvider));
+            schema.Extensions.AddRange(GetValueLookupCapabilityProperties(jsonProperty.AttributeProvider));
         }
         
         private static IEnumerable<KeyValuePair<string, object>> GetMetadataExtensions(IAttributeProvider attributeProvider)
@@ -36,6 +37,12 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
         private static IEnumerable<KeyValuePair<string, object>> GetValueLookupProperties(IAttributeProvider attributeProvider)
         {
             var attribute = attributeProvider.GetAttributes(typeof(DynamicValueLookupAttribute), true).SingleOrDefault() as DynamicValueLookupAttribute;
+            return attribute.GetSwaggerExtensions();
+        }
+
+        private static IEnumerable<KeyValuePair<string, object>> GetValueLookupCapabilityProperties (IAttributeProvider attributeProvider)
+        {
+            var attribute = attributeProvider.GetAttributes(typeof(DynamicValueLookupCapabilityAttribute), true).SingleOrDefault() as DynamicValueLookupCapabilityAttribute;
             return attribute.GetSwaggerExtensions();
         }
 
