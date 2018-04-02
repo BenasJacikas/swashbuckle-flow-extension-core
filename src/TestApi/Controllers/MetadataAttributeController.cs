@@ -15,7 +15,7 @@ namespace TestApi.Controllers
         }
         
         [HttpPost]
-        [Metadata(null, null, VisibilityType.Important)]
+        [Metadata(null, null, VisibilityType.Default)]
         [Route("/api/MetadataAttributeWithNullSummaryAndDescription")]
         public MetadataAttributeClass PostNull([FromBody][Metadata("FriendlyParameter", "ParameterDescription")] string value)
         {
