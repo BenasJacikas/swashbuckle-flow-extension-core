@@ -10,7 +10,8 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Extensions
             if (attribute is null)
                 yield break;
             
-            yield return new KeyValuePair<string, object>(Constants.XMsVisibility, attribute.Visibility.ToString().ToLowerInvariant());
+            if (attribute.Visibility != VisibilityType.Default)
+                yield return new KeyValuePair<string, object>(Constants.XMsVisibility, attribute.Visibility.ToString().ToLowerInvariant());
             if (attribute.Summary != null)
                 yield return new KeyValuePair<string, object>(Constants.XMsSummary, attribute.Summary);
             if (attribute.Description != null)
