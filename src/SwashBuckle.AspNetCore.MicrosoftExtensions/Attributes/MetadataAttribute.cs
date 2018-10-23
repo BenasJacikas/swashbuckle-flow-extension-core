@@ -30,7 +30,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes
         (
             string summary = null,
             string description = null,
-            VisibilityType visibility = VisibilityType.Default
+            VisibilityType visibility = VisibilityType.None
         )
         {
             Summary = summary;

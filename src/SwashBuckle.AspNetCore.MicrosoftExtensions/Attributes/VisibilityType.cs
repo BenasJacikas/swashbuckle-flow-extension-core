@@ -8,7 +8,7 @@ namespace SwashBuckle.AspNetCore.MicrosoftExtensions.Attributes
         /// <summary>
         /// Visible
         /// </summary>
-        Default,
+        None,
         /// <summary>
         /// Hidden in designer, can only be used by backend
         /// </summary>
