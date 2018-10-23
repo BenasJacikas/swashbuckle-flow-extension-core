@@ -54,7 +54,7 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
         {
             var swaggerDoc = await _client.GetSwaggerDocument();
             var parameterExtensions = swaggerDoc.Paths["/api/MetadataAttribute"].Post.Parameters[0].VendorExtensions;
-            
+
             //TODO:
             //Assert.Null(parameterExtensions["x-ms-visibility"]);
             Assert.Equal("FriendlyParameter", parameterExtensions["x-ms-summary"]);
@@ -67,7 +67,7 @@ namespace Swashbuckle.AspNetCore.MicrosoftExtensions.Tests
             var swaggerDoc = await _client.GetSwaggerDocument();
             var operationExtensions = swaggerDoc.Paths["/api/MetadataAttributeWithNullSummaryAndDescription"].Post.VendorExtensions;
 
-            Assert.Equal("important", operationExtensions["x-ms-visibility"]);
+            Assert.False(operationExtensions.ContainsKey("x-ms-visibility"));
             Assert.False(operationExtensions.ContainsKey("summary"));
             Assert.False(operationExtensions.ContainsKey("description"));
         }
