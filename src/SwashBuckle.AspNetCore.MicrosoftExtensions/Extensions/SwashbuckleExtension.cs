@@ -1,4 +1,5 @@
-﻿using Swashbuckle.AspNetCore.SwaggerGen;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.Filters;
 using SwashBuckle.AspNetCore.MicrosoftExtensions.VendorExtensionEntities;
 
